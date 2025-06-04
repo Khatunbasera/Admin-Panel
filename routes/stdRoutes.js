@@ -1,0 +1,10 @@
+const express = require('express');
+const router = express.Router();
+const {createStudent, getData, singleData, updateStudent, deleteStudent} = require('../controller/stdController');
+const {authMiddleware}  = require('../middleWare/authMiddle');
+router.post('/add-student',authMiddleware,createStudent);
+router.get('/all-data',authMiddleware,getData);
+router.get('/single-data/:phone',authMiddleware,singleData);
+router.put('/update-data/:phone',authMiddleware,updateStudent);
+router.delete('/delete-data/:phone',authMiddleware,deleteStudent);
+module.exports = router;
